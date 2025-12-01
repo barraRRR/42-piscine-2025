@@ -1,8 +1,5 @@
-/****************************************************
- *                                                  *
  *               42 PISCINE REPO                    *
- *                                                  *
- ****************************************************/
+ 
 
 This repository contains complete solutions, notes and utilities for the
 42 Piscine.
@@ -12,16 +9,12 @@ exercises, and keep everything organized in one place.
 It is not part of the Cursus and doesn’t include any Cursus projects.
 
 
-==============================
        ⚠️ IMPORTANT
-==============================
 - Private repo. Do not share outside the group.
 - Not a cheat-sheet. Understand before copying.
 - Keep subjects and personal data out of public places.
 
-==============================
        REPOSITORY STRUCTURE
-==============================
 ex00/
 ex01/
 ...
@@ -34,9 +27,7 @@ Inside each project:
 /solutions/    -> final code
 /tests/        -> small manual tests
 
-==============================
       COLLABORATION WORKFLOW
-==============================
 1. Branches
    - Use short, clear names: feat/c05-ex03, fix/c02-split, etc.
 
@@ -54,9 +45,7 @@ Inside each project:
    - Track bugs, missing exercises, improvements
    - Tag: bug, todo, enhancement, question
 
-==============================
       DEVELOPMENT GUIDELINES
-==============================
 - Follow Norminette
 - No extra libraries
 - Add simple tests when useful
