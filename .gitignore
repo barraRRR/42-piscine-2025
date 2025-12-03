@@ -1,0 +1,9 @@
+.DS_Store
+practice/
+42_examshell/
+a.out
+a.out.dSYM/
+shell01/
+shell00/
+*.swp
+*.c.swp

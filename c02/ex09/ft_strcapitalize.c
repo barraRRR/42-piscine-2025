@@ -6,43 +6,44 @@
 /*   By: jbarreir <jbarreir@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 16:12:49 by jbarreir          #+#    #+#             */
-/*   Updated: 2025/11/11 10:37:31 by jbarreir         ###   ########.fr       */
+/*   Updated: 2025/12/03 19:58:15 by jbarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_strcapitalize(char *str);
-
-int	main(void)
+int	is_low(char c)
 {
-	char	str[63] = "salut, comment tu vas ?";
-	char	str2[63] = " 42mots quarante-deux; cinquante+et+un";
-
-	ft_strcapitalize(str);
-	ft_strcapitalize(str2);
-	printf("%s\n", str);
-	printf("%s\n", str2);
-	return (0);
+	return (c >= 'a' && c <= 'z');
 }
-*/
+
+int	is_up(char c)
+{
+	return (c >= 'A' && c <= 'Z');
+}
+
+int	alphnum(char c)
+{
+	return ((c >= 'a' && c <= 'z' ) || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'));
+}
 
 char	*ft_strcapitalize(char *str)
 {
-	int		cnt;
+	int		i;
 
-	cnt = 0;
-	if (str[0] >= 'a' && str[0] <= 'z')
-		str[0] -= ('a' - 'A');
-	while (str[cnt])
+	if (!str)
+		return (NULL);
+	if (is_low(str[0]))
+		str[0] -= 32;
+	i = 1;
+	while (str && str[i])
 	{
-		if (str[cnt] >= 'a' && str[cnt] <= 'z')
-		{
-			if (str[cnt - 1] >= 32 && str[cnt - 1] <= 47)
-				str[cnt] -= ('a' - 'A');
-		}
-		cnt++;
+		if (is_low(str[i]) && !alphnum(str[i - 1]))
+			str[i] -= 32;
+		else if (is_up(str[i]) && alphnum(str[i - 1]))
+			str[i] += 32;
+		i++;
 	}
 	return (str);
 }
