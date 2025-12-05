@@ -14,27 +14,8 @@ It is not part of the Cursus and doesn’t include any Cursus projects.
 - Private repo. Do not share outside the group.
 - Not a cheat-sheet. Understand before copying.
 - Keep subjects and personal data out of public places.
-## Repository Structure
-ex00/
-
-ex01/
-
-...
-
-rush00/
-
-rush01/
 
 
-Inside each project:
-
-/subject.pdf   -> if available
-
-/notes/        -> explanations, edge cases
-
-/solutions/    -> final code
-
-/tests/        -> small manual tests
 
 ## Contributing
 
