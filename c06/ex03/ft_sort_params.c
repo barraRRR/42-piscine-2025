@@ -6,32 +6,31 @@
 /*   By: jbarreir <jbarreir@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 09:13:40 by jbarreir          #+#    #+#             */
-/*   Updated: 2025/11/20 12:10:02 by jbarreir         ###   ########.fr       */
+/*   Updated: 2025/12/06 10:29:26 by jbarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 int		ft_strcmp(char *s1, char *s2);
-void	ft_strcpy(char *dest, char *src);
-void	tmp_arr(int argc, char *argv[], char t[10000][100]);
-void	sort_arr(int argc, char t_arr[10000][100]);
+void	sort(int argc, char **argv);
+void	ft_swap(char **p1, char **p2);
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
-	char	t_arr[10000][100];
 	int		i;
 	int		j;
 
-	tmp_arr(argc, argv, t_arr);
-	sort_arr(argc, t_arr);
+	if (argc < 2)
+		return (0);
+	sort(argc, argv);
 	i = 1;
 	while (i < argc)
 	{
 		j = 0;
-		while (t_arr[i][j])
+		while (argv[i][j])
 		{
-			write(1, &t_arr[i][j], 1);
+			write(1, &argv[i][j], 1);
 			j++;
 		}
 		write(1, "\n", 1);
@@ -40,69 +39,47 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
+void	ft_swap(char **p1, char **p2)
+{
+	char	*tmp;
+
+	tmp = *p1;
+	*p1 = *p2;
+	*p2 = tmp;
+}
+
 int	ft_strcmp(char *s1, char *s2)
-{
-	int		cnt;
-
-	cnt = 0;
-	while (s1[cnt] && s2[cnt])
-	{
-		if (s1[cnt] != s2[cnt])
-			return (s1[cnt] - s2[cnt]);
-		cnt++;
-	}
-	return (s1[cnt] - s2[cnt]);
-}
-
-void	ft_strcpy(char *dest, char *src)
-{
-	int		count;
-
-	count = 0;
-	while (src[count] != '\0')
-	{
-		dest[count] = src[count];
-		count++;
-	}
-	dest[count] = '\0';
-}
-
-void	tmp_arr(int argc, char *argv[], char t[10000][100])
 {
 	int		i;
 
 	i = 0;
-	while (i < argc)
+	while (s1[i] && s2[i])
 	{
-		ft_strcpy(t[i], argv[i]);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
+	return (s1[i] - s2[i]);
 }
 
-void	sort_arr(int argc, char t_arr[10000][100])
+void	sort(int argc, char **argv)
 {
 	int		i;
-	int		j;
-	char	t[100];
 	int		swap;
 
-	i = 1;
 	swap = 1;
-	while (i < argc || swap)
+	while (swap)
 	{
+		i = 0;
 		swap = 0;
-		j = i + 1;
-		while (j < argc)
+		while (i < argc - 1)
 		{
-			if (ft_strcmp(t_arr[i], t_arr[j]) > 0)
+			if (ft_strcmp(argv[i], argv[i + 1]) > 0)
 			{
-				ft_strcpy(t, t_arr[i]);
-				ft_strcpy(t_arr[i], t_arr[j]);
-				ft_strcpy(t_arr[j], t);
+				ft_swap(&argv[i], &argv[i + 1]);
 				swap = 1;
 			}
-			j++;
+			i++;
 		}
-		i++;
 	}
 }
