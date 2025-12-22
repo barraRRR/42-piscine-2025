@@ -6,7 +6,7 @@
 /*   By: jbarreir <jbarreir@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 21:05:30 by jbarreir          #+#    #+#             */
-/*   Updated: 2025/12/20 21:23:33 by jbarreir         ###   ########.fr       */
+/*   Updated: 2025/12/22 13:54:01 by jbarreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,12 @@ typedef struct s_btree
 	struct s_btree	*right;
 	void			*item;
 }	t_btree;
+
+typedef struct s_queue
+{
+	struct s_queue	*next;
+	int				level;
+	t_btree			*node;
+}	t_queue;
 
 #endif
